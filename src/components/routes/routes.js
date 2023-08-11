@@ -1,6 +1,5 @@
 import React, {useContext} from "react";
 import { Route, BrowserRouter, Routes, Navigate } from "react-router-dom";
-
 import Login from "../login/login";
 import MainScreen from "../main/mainScreen";
 import {AuthProvider, AuthContext} from "../contexts/auth"
@@ -10,7 +9,7 @@ const AppRoutes = () => {
     const { authenticated } = useContext(AuthContext);
 
     if (!authenticated) {
-      return <Navigate to="/"/>
+      return <Navigate to="/login"/>
     }
     return children;
   };
@@ -18,7 +17,8 @@ const AppRoutes = () => {
     <BrowserRouter>
       <AuthProvider>
         <Routes>
-          <Route exact path="/" element={<Login />} />
+        <Route exact path="/" element={<Navigate to="/login" />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/main" element={<Private><MainScreen /></Private>} />
         </Routes>
       </AuthProvider>

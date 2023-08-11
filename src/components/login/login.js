@@ -19,17 +19,9 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault(); //o evento de clicar em login nao executa a açao padrao de retornar na mesma pagina
     login(email, password);//integraçao com a api de autenticação, 
- 
-    if (isRegisterMode) {
-      // Lógica para criar novo usuário
-    } else {
-      // Lógica para fazer login
-  
-    }
   };
 
   return (
-    
     <div className="login-container">
       <div><p>{String(authenticated)}</p></div>
       <h2 className="login-title">{isRegisterMode ? 'Register' : 'Login'}</h2>

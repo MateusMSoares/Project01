@@ -11,17 +11,18 @@ export const AuthProvider = ({children}) => {
     const login = (email, password) => {
         console.log("login", {email, password})
         
-        if (email === "admin@admin" && password === "admin") {
+        if (email === "" && password === "") {
             setUser({id: "123"});
             navigate("/main")
         }else {
-            navigate("/")
+            navigate("/login")
         }
         
     }
 
     const logout = () => {
     }
+    
     return(
         <AuthContext.Provider value = {{authenticated: !!user, user, login, logout}}>
             {children}
